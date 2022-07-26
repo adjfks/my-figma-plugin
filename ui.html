@@ -1,0 +1,53 @@
+<h1>my plugin</h1>
+<div class="operator-areas">
+  <button id="updateBtn">更新selection</button>
+  <button id="logRootBtn">打印figma.root</button>
+  <button id="logPageBtn">打印figma.currentPage</button>
+  <button id="logFills">打印node.fills</button>
+</div>
+<h2 class="weapon"></h2>
+
+<script>
+  const operatorAreas = document.querySelector('.operator-areas')
+  const updateBtn = document.querySelector('#updateBtn')
+  const logRootBtn = document.querySelector('#logRootBtn')
+  const logPageBtn = document.querySelector('#logPageBtn')
+
+  operatorAreas.addEventListener('click', (e) => {
+    switch (e.target.id) {
+      case 'updateBtn':
+        sentData({
+          type: 'update'
+        })
+        break
+      case 'logRootBtn':
+        sentData({
+          type: 'logRoot'
+        })
+        break
+      case 'logPageBtn':
+        sentData({
+          type: 'logPage'
+        })
+        break
+      case 'logFills':
+        sentData({
+          type: 'logFills'
+        })
+      default:
+        console.log('未匹配')
+    }
+  })
+
+  function sentData(data) {
+    parent.postMessage({
+      pluginMessage: data
+    }, '*')
+  }
+
+  onmessage = (event) => {
+    console.log(`event.data.pluginMessage: ${event.data.pluginMessage}`)
+    document.querySelector('.weapon').innerHTML = event.data.pluginMessage.weapon
+  }
+
+</script>

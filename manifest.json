@@ -1,0 +1,17 @@
+{
+  "name": "testDemo",
+  "id": "1133279962245726724",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": [
+    "figma",
+    "figjam"
+  ],
+  "ui": "ui.html",
+  "parameters": [
+    {
+      "name": "Weapon",
+      "key": "weapon"
+    }
+  ]
+}
